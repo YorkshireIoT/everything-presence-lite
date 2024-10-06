@@ -3,38 +3,39 @@ esphome:
   comment: Everything Presence Lite
   friendly_name: ${friendly_name}
   name_add_mac_suffix: True
-  project: 
+  project:
     name: EverythingSmartTechnology.Everything Presence Lite
     version: "1.0.11"
 
 esp32:
   board: esp32dev
   framework:
-    type: esp-idf
+    type: arduino
 
 # Enable logging
 logger:
   level: ${log_level}
+  hardware_uart: UART0
 
 # Enable Home Assistant API
 api:
 
 ota:
-  - platform: esphome
-    id: ota_esphome
-  - platform: http_request
-    id: ota_http_request
 
 http_request:
+  verify_ssl: false
 
 wifi:
 
-improv_serial:
-
 i2c:
- sda: 21
- scl: 22
- scan: true
+  - id: bus_a
+    sda: 21
+    scl: 22
+    scan: true
+  - id: bus_b
+    sda: 27
+    scl: 26
+    scan: true
 
 light:
   - platform: status_led
@@ -64,6 +65,7 @@ number:
 sensor:
   - platform: bh1750
     name: Illuminance
+    i2c_id: bus_a
     id: illuminance_sensor
     address: 0x23
     update_interval: ${illuminance_update_interval}
