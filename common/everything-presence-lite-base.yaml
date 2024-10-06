@@ -21,6 +21,7 @@ logger:
 api:
 
 ota:
+  platform: esphome
 
 http_request:
   verify_ssl: false
