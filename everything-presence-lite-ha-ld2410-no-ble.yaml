@@ -6,7 +6,7 @@ substitutions:
   log_level: DEBUG
 
 dashboard_import:
-  package_import_url: github://everythingsmarthome/everything-presence-lite/everything-presence-lite-ha-ld2410-no-ble.yaml@main
+  package_import_url: github://YorkshireIoT/everything-presence-lite/everything-presence-lite-ha-ld2410-no-ble.yaml@main
   import_full_config: false # or true
 
 packages:
