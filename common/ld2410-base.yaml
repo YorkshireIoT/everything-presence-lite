@@ -4,14 +4,17 @@ esphome:
       - switch.turn_on: engineering_mode
 
 uart:
-  id: uart_bus
+  id: ld2410_uart
   baud_rate:  256000
   rx_pin: 16
   tx_pin: 17
   parity: NONE
   stop_bits: 1
+  rx_buffer_size: 512
 
 ld2410:
+  uart_id: ld2410_uart
+  throttle: 2000ms
 
 binary_sensor:
   - platform: ld2410
@@ -36,7 +39,7 @@ sensor:
     still_distance:
       name: Still Target Distance
     moving_energy:
-      name: Moveing Target Energy
+      name: Moving Target Energy
     still_energy:
       name: Still Target Energy
     detection_distance:
@@ -94,7 +97,7 @@ switch:
       id: "engineering_mode"
     bluetooth:
       name: "mmWave Bluetooth"
-      disabled_by_default: true
+      id: bluetooth_enable
 
 number:
   - platform: ld2410
